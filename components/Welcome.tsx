@@ -15,13 +15,13 @@ const Welcome = () => {
         source={require("./../assets/images/Fondo-app.png")}
         style={styles.image}
       >
-        <View style={styles.welcomeContainer}>
+        <View style={{ ...styles.boxShadow, ...styles.welcomeContainer }}>
           <Text style={styles.welcomeTitle}>¡ WELCOME TO RAH-APP !</Text>
           <Text style={styles.description}>
             An app with some functionalities
           </Text>
           <Text style={styles.description}>Designed by Ricardo Álvarez</Text>
-          <Pressable style={styles.Pressable}>
+          <Pressable style={{ ...styles.Pressable, ...styles.boxShadow }}>
             <Text style={styles.buttonContent}>LOGIN</Text>
           </Pressable>
         </View>
@@ -78,5 +78,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     backgroundColor: AppColors.secondColor,
+  },
+  boxShadow: {
+    shadowColor: "black",
+    shadowOffset: {
+      width: 6,
+      height: 6,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 16,
   },
 });
