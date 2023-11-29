@@ -1,14 +1,18 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Pressable,
-} from "react-native";
+import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import React from "react";
 import AppColors from "../assets/styles/AppColors";
+import {
+  NavigationContainer,
+  NavigationProp,
+  ParamListBase,
+} from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Welcome = () => {
+type WelcomeScreenProps = {
+  navigation: NavigationProp<ParamListBase>;
+};
+const Welcome = ({ navigation }: WelcomeScreenProps) => {
   return (
     <View style={styles.mainContainer}>
       <ImageBackground
@@ -21,9 +25,12 @@ const Welcome = () => {
             An app with some functionalities
           </Text>
           <Text style={styles.description}>Designed by Ricardo Álvarez</Text>
-          <Pressable style={{ ...styles.Pressable, ...styles.boxShadow }}>
+          <TouchableOpacity
+            style={{ ...styles.touchable, ...styles.boxShadow }}
+            onPress={() => navigation.navigate("Login")}
+          >
             <Text style={styles.buttonContent}>LOGIN</Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
       </ImageBackground>
     </View>
@@ -69,7 +76,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontWeight: "700",
   },
-  Pressable: {
+  touchable: {
     marginTop: 15,
     marginBottom: 15,
     borderColor: "white",
