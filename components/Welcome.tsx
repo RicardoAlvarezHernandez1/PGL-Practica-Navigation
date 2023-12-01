@@ -44,8 +44,6 @@ const styles = StyleSheet.create({
     flex: 20,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: "black",
-    borderWidth: 2,
   },
   image: {
     justifyContent: "center",
