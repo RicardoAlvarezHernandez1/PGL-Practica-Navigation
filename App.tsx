@@ -3,6 +3,7 @@ import React from "react";
 import { NavigationContainer, Theme } from "@react-navigation/native";
 import CustomDrawer from "./components/CustomDrawer";
 import appColors from "./assets/styles/AppColors";
+import IsLoggedProvider from "./providers/IsLoggedProvider";
 
 export default function App() {
   const myTheme: Theme = {
@@ -20,9 +21,11 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       {/* <NavigationContainer theme={myTheme}> */}
-      <NavigationContainer>
-        <CustomDrawer></CustomDrawer>
-      </NavigationContainer>
+      <IsLoggedProvider>
+        <NavigationContainer>
+          <CustomDrawer></CustomDrawer>
+        </NavigationContainer>
+      </IsLoggedProvider>
     </View>
   );
 }
