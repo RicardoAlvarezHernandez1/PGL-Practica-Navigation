@@ -10,8 +10,20 @@ import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AppColors from "../assets/styles/AppColors";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { LoggedContext } from "../context/LoggedContext";
+import { UserContext } from "../context/UserContext";
 
 const LoginScreen = () => {
+  const { isLogged, toggleIsLogged } = React.useContext(LoggedContext);
+  const { user, setUserName } = React.useContext(UserContext);
+  const onClickButton = () => {
+    toggleIsLogged();
+  };
+
+  const setUser = (text: string) => {
+    setUserName(text);
+  };
+
   return (
     <View style={styles.mainContainer}>
       <ImageBackground
@@ -24,6 +36,7 @@ const LoginScreen = () => {
             style={styles.image}
           ></Image>
           <TextInput
+            onChangeText={(text) => setUser(text)}
             placeholder="Nombre..."
             style={styles.inputStyle}
           ></TextInput>
@@ -31,7 +44,7 @@ const LoginScreen = () => {
             placeholder="Contraseña..."
             style={styles.inputStyle}
           ></TextInput>
-          <TouchableOpacity style={styles.Pressable}>
+          <TouchableOpacity style={styles.Pressable} onPress={onClickButton}>
             <Ionicons
               name={"paper-plane-outline"}
               size={20}
@@ -53,8 +66,6 @@ const styles = StyleSheet.create({
     flex: 20,
     justifyContent: "center",
     alignItems: "center",
-    borderColor: "black",
-    borderWidth: 2,
   },
   image: {
     width: 150,
