@@ -18,12 +18,12 @@ const WelcomeUser = ({ navigation }: WelcomeScreenProps) => {
   return (
     <View style={styles.mainContainer}>
       <ImageBackground
-        source={require("./../assets/images/Fondo-app.png")}
+        source={require("./../assets/images/fondologgeado.png")}
         style={styles.image}
       >
         <View style={{ ...styles.boxShadow, ...styles.welcomeContainer }}>
           <Text style={styles.welcomeTitle}>¡ WELCOME {user} !</Text>
-          <Text style={styles.description}>Thank you loggin in ;) </Text>
+          <Text style={styles.description}>Thanks for loggin in ;) </Text>
           <Text style={styles.description}>
             Please , press the portfolio button to see my portfolio
           </Text>
