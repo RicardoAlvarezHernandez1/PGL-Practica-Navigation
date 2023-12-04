@@ -8,7 +8,7 @@ import {
 
 import LoginScreen from "../screens/LoginScreen";
 import appColors from "../assets/styles/AppColors";
-import Welcome from "./Welcome";
+import Welcome from "../screens/Welcome";
 import WelcomeUser from "../screens/WelcomeUser";
 import PortfolioScreen from "../screens/PortfolioScreen";
 import { LoggedContext } from "../context/LoggedContext";
