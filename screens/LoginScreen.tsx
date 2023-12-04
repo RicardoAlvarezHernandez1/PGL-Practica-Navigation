@@ -43,6 +43,7 @@ const LoginScreen = () => {
           <TextInput
             placeholder="Contraseña..."
             style={styles.inputStyle}
+            secureTextEntry={true}
           ></TextInput>
           <TouchableOpacity style={styles.Pressable} onPress={onClickButton}>
             <Ionicons
