@@ -14,6 +14,6 @@ export const cardData: CardData[] = [
     image: require("./../assets/images/lee.jpg"),
     title: "Ricardo Colleman",
     body: "Soy un intento de culturista , al que le gusta reirse de las personas con alopecia degenerativa (es irónico porque yo tambien lo tengo)",
-    imageBackground: require("./../assets/images/goldo.jpg"),
+    imageBackground: require("./../assets/images/gymazul.png"),
   },
 ];
