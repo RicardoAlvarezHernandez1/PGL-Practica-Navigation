@@ -11,13 +11,13 @@ import appColors from "../assets/styles/AppColors";
 import Welcome from "../screens/Welcome";
 import WelcomeUser from "../screens/WelcomeUser";
 import PortfolioScreen from "../screens/PortfolioScreen";
-import { LoggedContext } from "../context/LoggedContext";
 import UserProvider from "../providers/UserProvider";
+import { UserContext } from "../context/UserContext";
 
 const Drawer = createDrawerNavigator();
 
 const CustomDrawer = () => {
-  const { isLogged, toggleIsLogged } = React.useContext(LoggedContext);
+  const { isLogged, toggleIsLogged } = React.useContext(UserContext);
 
   const drawerNavigatorScreenOptions: DrawerNavigationOptions = {
     //header: ({navigation}) => <CustomHeader navigation={navigation}></CustomHeader>,
@@ -38,7 +38,7 @@ const CustomDrawer = () => {
   };
 
   return (
-    <UserProvider>
+    <>
       {isLogged ? (
         <Drawer.Navigator
           initialRouteName="WelcomeUser"
@@ -64,7 +64,7 @@ const CustomDrawer = () => {
           <Drawer.Screen name="Login" component={LoginScreen} />
         </Drawer.Navigator>
       )}
-    </UserProvider>
+    </>
   );
 };
 

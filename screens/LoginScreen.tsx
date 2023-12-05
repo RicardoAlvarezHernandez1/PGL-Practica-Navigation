@@ -10,11 +10,10 @@ import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AppColors from "../assets/styles/AppColors";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import { LoggedContext } from "../context/LoggedContext";
 import { UserContext } from "../context/UserContext";
 
 const LoginScreen = () => {
-  const { isLogged, toggleIsLogged } = React.useContext(LoggedContext);
+  const { isLogged, toggleIsLogged } = React.useContext(UserContext);
   const { user, setUserName } = React.useContext(UserContext);
   const onClickButton = () => {
     toggleIsLogged();
