@@ -1,5 +1,4 @@
 import React from "react";
-import { LoggedContext, LoggedContextType } from "../context/LoggedContext";
 import { UserContext, UserContextType } from "../context/UserContext";
 
 type UserProviderProps = {
@@ -13,9 +12,15 @@ const UserProvider = (props: UserProviderProps) => {
 
   const setUserName = (username: string) => setuser(username);
 
+  const [isLogged, setisLogged] = React.useState(false);
+
+  const toggleIsLogged = () => setisLogged(true);
+
   const defaultValue: UserContextType = {
     user,
+    isLogged,
     setUserName,
+    toggleIsLogged,
   };
 
   return (
