@@ -7,6 +7,7 @@ import {
   ImageBackground,
 } from "react-native";
 import React from "react";
+import AppColors from "../assets/styles/AppColors";
 
 const Card = (props: {
   avatar: ImageProps;
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     paddingBottom: 1,
     fontSize: 30,
     fontStyle: "italic",
-    color: "yellow",
+    color: AppColors.secondColor,
     paddingTop: 20,
     paddingLeft: 25,
     textShadowColor: "black",
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     height: 90,
     width: 90,
     borderRadius: 100,
-    borderColor: "yellow",
+    borderColor: AppColors.firstColor,
     borderWidth: 2,
   },
   BackImage: {
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
     width: 400,
   },
   bodyText: {
-    color: "white",
+    color: AppColors.firstColor,
     fontWeight: "700",
     textAlign: "center",
     paddingLeft: 30,
