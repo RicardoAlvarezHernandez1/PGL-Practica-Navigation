@@ -11,6 +11,7 @@ import appColors from "../assets/styles/AppColors";
 import Welcome from "../screens/Welcome";
 import WelcomeUser from "../screens/WelcomeUser";
 import PortfolioScreen from "../screens/PortfolioScreen";
+import ActivitynaitorScreen from "../screens/ActivitynaitorScreen";
 import UserProvider from "../providers/UserProvider";
 import { UserContext } from "../context/UserContext";
 
@@ -50,6 +51,10 @@ const CustomDrawer = () => {
             options={{ title: "WelcomeUser" }}
           />
           <Drawer.Screen name="Portfolio" component={PortfolioScreen} />
+          <Drawer.Screen
+            name="Activitynaitor"
+            component={ActivitynaitorScreen}
+          />
         </Drawer.Navigator>
       ) : (
         <Drawer.Navigator
