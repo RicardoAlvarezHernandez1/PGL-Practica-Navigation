@@ -13,6 +13,7 @@ import WelcomeUser from "../screens/WelcomeUser";
 import PortfolioScreen from "../screens/PortfolioScreen";
 import UserProvider from "../providers/UserProvider";
 import { UserContext } from "../context/UserContext";
+import RegistrationScreen from "../screens/RegistrationScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -61,6 +62,7 @@ const CustomDrawer = () => {
             component={Welcome}
             options={{ title: "Welcome" }}
           />
+          <Drawer.Screen name="Registration" component={RegistrationScreen} />
           <Drawer.Screen name="Login" component={LoginScreen} />
         </Drawer.Navigator>
       )}
