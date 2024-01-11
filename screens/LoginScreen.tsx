@@ -11,12 +11,24 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import AppColors from "../assets/styles/AppColors";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { UserContext } from "../context/UserContext";
+import { loginUser } from "../services/LoginService";
 
 const LoginScreen = () => {
   const { isLogged, toggleIsLogged } = React.useContext(UserContext);
   const { user, setUserName } = React.useContext(UserContext);
-  const onClickButton = () => {
-    toggleIsLogged();
+  const [password, setPassword] = React.useState("");
+  const onClickButton = (userName: string, userPassword: string) => {
+    if (userName == "" || userPassword == "") {
+      window.alert("Por favor , rellena los campos ratón guayabero");
+    } else {
+      loginUser(userName, userPassword).then((response) => {
+        if (response.status == 200) {
+          toggleIsLogged();
+        } else {
+          window.alert("El usuario no esta registrado");
+        }
+      });
+    }
   };
 
   const setUser = (text: string) => {
@@ -40,11 +52,15 @@ const LoginScreen = () => {
             style={styles.inputStyle}
           ></TextInput>
           <TextInput
+            onChangeText={(text) => setPassword(text)}
             placeholder="Contraseña..."
             style={styles.inputStyle}
             secureTextEntry={true}
           ></TextInput>
-          <TouchableOpacity style={styles.Pressable} onPress={onClickButton}>
+          <TouchableOpacity
+            style={styles.Pressable}
+            onPress={() => onClickButton(user, password)}
+          >
             <Ionicons
               name={"paper-plane-outline"}
               size={20}
