@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import {
   DrawerNavigationOptions,
@@ -11,9 +11,10 @@ import appColors from "../assets/styles/AppColors";
 import Welcome from "../screens/Welcome";
 import WelcomeUser from "../screens/WelcomeUser";
 import PortfolioScreen from "../screens/PortfolioScreen";
-import UserProvider from "../providers/UserProvider";
+import LogoutScreen from "../screens/LogoutScreen";
 import { UserContext } from "../context/UserContext";
 import RegistrationScreen from "../screens/RegistrationScreen";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Drawer = createDrawerNavigator();
 
@@ -21,7 +22,6 @@ const CustomDrawer = () => {
   const { isLogged, toggleIsLogged } = React.useContext(UserContext);
 
   const drawerNavigatorScreenOptions: DrawerNavigationOptions = {
-    //header: ({navigation}) => <CustomHeader navigation={navigation}></CustomHeader>,
     headerTitle: "RAH-APP",
     headerTitleAlign: "center",
     headerStyle: {
@@ -41,17 +41,28 @@ const CustomDrawer = () => {
   return (
     <>
       {isLogged ? (
-        <Drawer.Navigator
-          initialRouteName="WelcomeUser"
-          screenOptions={drawerNavigatorScreenOptions}
-        >
-          <Drawer.Screen
-            name="Home"
-            component={WelcomeUser}
-            options={{ title: "WelcomeUser" }}
-          />
-          <Drawer.Screen name="Portfolio" component={PortfolioScreen} />
-        </Drawer.Navigator>
+        <>
+          <Drawer.Navigator
+            initialRouteName="WelcomeUser"
+            screenOptions={drawerNavigatorScreenOptions}
+          >
+            <Drawer.Screen
+              name="Home"
+              component={WelcomeUser}
+              options={{ title: "WelcomeUser" }}
+            />
+            <Drawer.Screen name="Portfolio" component={PortfolioScreen} />
+            <Drawer.Screen
+              name="Logout"
+              component={LogoutScreen}
+              options={{
+                drawerIcon: () => (
+                  <Ionicons name={"log-out-outline"} size={25} color={"red"} />
+                ),
+              }}
+            />
+          </Drawer.Navigator>
+        </>
       ) : (
         <Drawer.Navigator
           initialRouteName="Welcome"
