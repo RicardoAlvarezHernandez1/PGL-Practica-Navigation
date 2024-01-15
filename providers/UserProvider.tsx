@@ -14,7 +14,7 @@ const UserProvider = (props: UserProviderProps) => {
 
   const [isLogged, setisLogged] = React.useState(false);
 
-  const toggleIsLogged = () => setisLogged(true);
+  const toggleIsLogged = () => setisLogged(!isLogged);
 
   const defaultValue: UserContextType = {
     user,
