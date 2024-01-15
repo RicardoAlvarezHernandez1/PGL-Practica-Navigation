@@ -23,6 +23,7 @@ const LoginScreen = () => {
     } else {
       loginUser(userName, userPassword).then((response) => {
         if (response.status == 200) {
+          //console.log(response.headers.get("Set-Cookie"));
           toggleIsLogged();
         } else {
           window.alert("El usuario no esta registrado");
