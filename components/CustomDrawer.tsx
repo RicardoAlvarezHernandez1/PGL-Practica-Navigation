@@ -47,11 +47,23 @@ const CustomDrawer = () => {
             screenOptions={drawerNavigatorScreenOptions}
           >
             <Drawer.Screen
-              name="Home"
+              name="WelcomeUser"
               component={WelcomeUser}
-              options={{ title: "WelcomeUser" }}
+              options={{
+                drawerIcon: () => (
+                  <Ionicons name={"happy-outline"} size={25} color={"black"} />
+                ),
+              }}
             />
-            <Drawer.Screen name="Portfolio" component={PortfolioScreen} />
+            <Drawer.Screen
+              name="Portfolio"
+              component={PortfolioScreen}
+              options={{
+                drawerIcon: () => (
+                  <Ionicons name={"reader-outline"} size={25} color={"black"} />
+                ),
+              }}
+            />
             <Drawer.Screen
               name="Logout"
               component={LogoutScreen}
@@ -69,12 +81,40 @@ const CustomDrawer = () => {
           screenOptions={drawerNavigatorScreenOptions}
         >
           <Drawer.Screen
-            name="Home"
+            name="Welcome"
             component={Welcome}
-            options={{ title: "Welcome" }}
+            options={{
+              drawerIcon: () => (
+                <Ionicons
+                  name={"thumbs-up-outline"}
+                  size={25}
+                  color={"black"}
+                />
+              ),
+            }}
           />
-          <Drawer.Screen name="Registration" component={RegistrationScreen} />
-          <Drawer.Screen name="Login" component={LoginScreen} />
+          <Drawer.Screen
+            name="Registration"
+            component={RegistrationScreen}
+            options={{
+              drawerIcon: () => (
+                <Ionicons
+                  name={"person-add-outline"}
+                  size={25}
+                  color={"black"}
+                />
+              ),
+            }}
+          />
+          <Drawer.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{
+              drawerIcon: () => (
+                <Ionicons name={"log-in-outline"} size={25} color={"black"} />
+              ),
+            }}
+          />
         </Drawer.Navigator>
       )}
     </>
