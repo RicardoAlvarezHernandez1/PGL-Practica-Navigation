@@ -28,22 +28,24 @@ const RegistrationScreen = () => {
   function setPassword(text: string) {
     setuserPassword(text);
   }
-  /* function alert (
-    title: string,
-    message?: string,
-    buttons?: AlertButton[],
-    options?: AlertOptions,
-  ); */
+
   const onClickButton = (user: string, email: string, password: string) => {
-    registerUser(user, email, password)
-      .then((status) => {
-        if (status == 400) {
-          window.alert("Error : no se a podido registrar el usuario");
-        } else {
-          window.alert("Registro exitoso");
-        }
-      })
-      .catch((err) => console.log(err));
+    {
+      if (user == "" || email == "" || password == "") {
+        window.alert("Por favor , rellena los campos watón culiao");
+      } else {
+        registerUser(user, email, password)
+          .then((status) => {
+            if (status == 400) {
+              window.alert("Error : no se a podido registrar el usuario");
+              return null;
+            } else {
+              window.alert("Registro exitoso");
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    }
   };
 
   return (

@@ -33,6 +33,7 @@ const LoginScreen = () => {
           toggleIsLogged();
         } else {
           window.alert("El usuario no esta registrado");
+          return null;
         }
       });
     }
