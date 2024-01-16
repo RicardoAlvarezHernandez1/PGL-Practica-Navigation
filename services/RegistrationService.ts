@@ -1,4 +1,6 @@
-const REGISTRATION_API_URL = "http://192.168.1.77:8888/users";
+import { IpDirection } from "./IpDirection";
+
+const REGISTRATION_API_URL = `http://${IpDirection()}:8888/users`;
 const REGISTRATION_PATH = "/register";
 
 export const registerUser = async (

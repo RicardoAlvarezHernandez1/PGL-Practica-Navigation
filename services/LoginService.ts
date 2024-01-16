@@ -1,4 +1,6 @@
-const LOGIN_API_URL = "http://192.168.1.77:8888/users";
+import { IpDirection } from "./IpDirection";
+
+const LOGIN_API_URL = `http://${IpDirection()}:8888/users`;
 const LOGIN_PATH = "/login";
 
 export const loginUser = async (
