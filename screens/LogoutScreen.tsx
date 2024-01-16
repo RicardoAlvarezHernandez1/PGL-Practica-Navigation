@@ -10,16 +10,20 @@ import { UserContext } from "../context/UserContext";
 import AppColors from "../assets/styles/AppColors";
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import { logoutUser } from "../services/LogoutService";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-type WelcomeScreenProps = {
-  navigation: NavigationProp<ParamListBase>;
-};
-const LogoutScreen = ({ navigation }: WelcomeScreenProps) => {
+const LogoutScreen = () => {
   const { user, setUserName } = React.useContext(UserContext);
   const { isLogged, toggleIsLogged } = React.useContext(UserContext);
+
+  const removeCookie = async () => {
+    await AsyncStorage.removeItem("token");
+  };
+
   const onClickButton = () => {
     logoutUser().then((response) => {
       if (response.status == 200) {
+        removeCookie();
         toggleIsLogged();
       } else {
         window.alert("Ha habido un problema");
@@ -32,8 +36,8 @@ const LogoutScreen = ({ navigation }: WelcomeScreenProps) => {
         source={require("./../assets/images/fondologgeado.png")}
         style={styles.image}
       >
-        <View style={{ ...styles.boxShadow, ...styles.welcomeContainer }}>
-          <Text style={styles.welcomeTitle}>¡ BYE {user} !</Text>
+        <View style={{ ...styles.boxShadow, ...styles.logoutContainer }}>
+          <Text style={styles.logoutTitle}>¡ BYE {user} !</Text>
           <Text style={styles.description}>
             Thanks for spend your time on my app my friend;)
           </Text>
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  welcomeTitle: {
+  logoutTitle: {
     fontWeight: "700",
     fontSize: 35,
     textAlign: "center",
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     textAlign: "center",
   },
-  welcomeContainer: {
+  logoutContainer: {
     width: 275,
     justifyContent: "center",
     alignItems: "center",

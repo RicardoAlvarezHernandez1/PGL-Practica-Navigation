@@ -12,18 +12,24 @@ import AppColors from "../assets/styles/AppColors";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { UserContext } from "../context/UserContext";
 import { loginUser } from "../services/LoginService";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = () => {
   const { isLogged, toggleIsLogged } = React.useContext(UserContext);
   const { user, setUserName } = React.useContext(UserContext);
   const [password, setPassword] = React.useState("");
+  const saveCookie = async (cookie: string) => {
+    await AsyncStorage.setItem("token", cookie);
+  };
   const onClickButton = (userName: string, userPassword: string) => {
     if (userName == "" || userPassword == "") {
       window.alert("Por favor , rellena los campos ratón guayabero");
     } else {
       loginUser(userName, userPassword).then((response) => {
-        if (response.status == 200) {
-          //console.log(response.headers.get("Set-Cookie"));
+        let cookie = String(response.headers.get("Set-Cookie"));
+        if (response.status == 200 || cookie != null) {
+          saveCookie(cookie);
+          console.log(`Token guardado : ${cookie}`);
           toggleIsLogged();
         } else {
           window.alert("El usuario no esta registrado");
