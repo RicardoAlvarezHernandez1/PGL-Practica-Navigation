@@ -15,6 +15,7 @@ import LogoutScreen from "../screens/LogoutScreen";
 import { UserContext } from "../context/UserContext";
 import RegistrationScreen from "../screens/RegistrationScreen";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import RecorderScreen from "../screens/RecorderScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -61,6 +62,15 @@ const CustomDrawer = () => {
               options={{
                 drawerIcon: () => (
                   <Ionicons name={"reader-outline"} size={25} color={"black"} />
+                ),
+              }}
+            />
+            <Drawer.Screen
+              name="Recorder"
+              component={RecorderScreen}
+              options={{
+                drawerIcon: () => (
+                  <Ionicons name={"mic-outline"} size={25} color={"black"} />
                 ),
               }}
             />
